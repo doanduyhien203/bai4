@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList } from "@angular/core";
 import { TabPanelComponent } from "./tab-panel.component";
 @Component({
     selector: 'app-tab-group',
@@ -6,24 +6,47 @@ import { TabPanelComponent } from "./tab-panel.component";
         <div class="tab-header">
             <div class="tab-header-item" 
             *ngFor ="let tab of tabPanelList; index as idx"
+            [class.active]="idx === activeIndex"
             (click)="activeIndexChange.emit(idx)"
             >
                 {{tab.title}}
                 <button (click)="removeTab(tab)">x</button>
             </div>
         </div>
+<!--
         <div class="tab-body" *ngIf="tabPanelList.length;else noTabs">
-            <ng-container *ngTemplateOutlet="tabPanelList(activeIndex).panelBody"></ng-container>
+            <ng-container *ngTemplateOutlet="tabPanelList[activeIndex].panelBody"></ng-container>
         </div>
         <ng-template #noTabs>
             No tabs
         </ng-template>
+-->
     `, 
+    styles:[`
+        .tab-header {
+            display: flex;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #000;
+            margin-bottom: 0.5rem;
+        }
+        .tab-header-item{
+            margin-right: 0.5rem;
+            padding : 5px 10px;
+        }
+        .tab-header-item.active {
+            border: 1px solid red;
+        }
+    `]
   })
   export class TabGroupComponent{
     tabPanelList: TabPanelComponent[] = [];
     @Input() activeIndex = 0;
     @Output() activeIndexChange = new EventEmitter<number>();
+    @ContentChildren(TabPanelComponent) tabPanels:QueryList<TabPanelComponent>;
+    ngAfterContentInit(){
+        console.log(this.tabPanels);
+        this.tabPanels.changes.subscribe(console.log);
+    }
     addTab(tab: TabPanelComponent){
         this.tabPanelList = [...this.tabPanelList, tab];
     }
