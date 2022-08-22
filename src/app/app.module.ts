@@ -11,6 +11,7 @@ import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabPanelComponent } from './tabs/tab-panel.component';
 import { TabContentDirective } from './tabs/tab-content.directive';
 import { FormatAddressPipe } from './format-address.pipe';
+import { AdultPipe } from './adult.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { FormatAddressPipe } from './format-address.pipe';
     TabBsGroupComponent,
     CounterComponent,
     TabContentDirective,
-    FormatAddressPipe
+    FormatAddressPipe,
+    AdultPipe,
   ],
   imports: [
     BrowserModule,

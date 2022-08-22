@@ -24,4 +24,40 @@ export class AppComponent {
     zip: "234",
     country:"sa dec"
   }
+  users = [
+    {
+      name: "Tiep Phan",
+      age: 30
+    },
+    {
+      name: "Trung Vo",
+      age: 28
+    },
+    {
+      name: "Chau Tran",
+      age: 29
+    },
+    {
+      name: "Tuan Anh",
+      age: 16
+    }
+  ];
+  formatAddress (addr: { address1: string; address2: string; city: string; zip: string; country: string; }){
+  //  console.log('function run',addr)
+    return (
+      addr.address1 +
+      " " +
+      addr.address2 +
+      ", " +
+      addr.city +
+      ", " +
+      addr.zip +
+      ", " +
+      addr.country
+  );
+  }
+  addUser(){
+//    this.users = [...this.users, {name: 'new user',age: 30}];
+  this.users.push({name: 'new user',age: 30});
+  }
 }

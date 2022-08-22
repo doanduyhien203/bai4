@@ -12,7 +12,7 @@ interface AddressLike{
 })
 export class FormatAddressPipe implements PipeTransform{
     transform(addr: AddressLike, para1?: string) {
-//        console.log('pipe',addr)
+        console.log('pipe',addr,para1)
         return (
             addr.address1 +
             " " +

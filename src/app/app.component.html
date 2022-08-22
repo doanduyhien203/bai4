@@ -1,4 +1,4 @@
-<!--
+
 <app-product></app-product>
 
 <app-tab-group [(activeIndex)]="currentIndex">
@@ -35,12 +35,28 @@
         </ng-template>
     </app-tab-panel>
 </tab-bs-group>
--->
+
 <p> {{currentdate | date}} </p>
 <p> {{currentdate | date:'shortDate'}} </p>
 <p> {{'Doan Hien' | uppercase}}</p>
 <p> {{100000 | currency:'VND'}}</p>
 <p> {{3.1419523424 | number:'1.1-10'}}</p>
 <p> {{ author | json}}</p>
+<!--
 <p>{{interval$ | async}}</p>
+-->
+{{formatAddress(addr)}}
 <p>{{addr | formatAddress:'para1'}}</p>
+User list
+<ul>
+    <li *ngFor="let user of users">
+        {{user.name}} - {{user.age}}
+    </li>
+</ul>
+Adult list
+<ul>
+    <li *ngFor="let user of users | adult" >
+        {{user.name}} - {{user.age}}
+    </li>
+</ul>
+<button (click)="addUser()">Add User</button>
