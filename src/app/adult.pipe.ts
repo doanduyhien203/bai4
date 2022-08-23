@@ -4,9 +4,9 @@ import { Pipe, PipeTransform } from "@angular/core";
     name: 'adult',
     pure: false
 })
-export class AdultPipe implements PipeTransform{
-    transform(value: any[]){
+export class AdultPipe implements PipeTransform {
+    transform(value: any[]) {
         console.log('adult');
-        return value.filter(v => v.age >= 18); 
+        return value.filter(v => v.age >= 18);
     }
 }
